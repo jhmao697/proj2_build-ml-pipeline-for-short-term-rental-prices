@@ -104,9 +104,10 @@ def go(args):
         sk_pipe,
         "random_forest_dir",
         serialization_format=mlflow.sklearn.SERIALIZATION_FORMAT_CLOUDPICKLE,
-        #signature = mlflow.models.infer_signature(
+        signature=False,
+        #signature=mlflow.models.infer_signature(
         #    X_val[processed_features], 
-        #    sk_pipe.predict(X_val[processed_features])
+        #    y_pred
         #),
         input_example=X_val.iloc[:5],
     )

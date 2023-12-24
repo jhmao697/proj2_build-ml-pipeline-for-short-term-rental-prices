@@ -134,7 +134,15 @@ def go(config: DictConfig):
             # Implement here #
             ##################
 
-            pass
+            _ = mlflow.run(
+                # Use the provided component:
+                f"{config['main']['components_repository']}/test_regression_model",
+                "main",
+                parameters={
+                "mlflow_model": "output_artifact:prod",
+                "test_dataset": "test_data.csv:latest",
+                }
+            )
 
 
 if __name__ == "__main__":
