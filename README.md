@@ -1,3 +1,26 @@
+# Additional info
+github link:
+https://github.com/jhmao697/proj2_build-ml-pipeline-for-short-term-rental-prices
+
+wandb link:
+https://wandb.ai/jianghui-mao/nyc_airbnb?workspace=user-jianghui-mao
+
+runs:
+mlflow run . -P steps=download
+mlflow run src/eda
+mlflow run . -P steps=basic_cleaning
+mlflow run . -P steps=data_check
+mlflow run . -P steps=data_split
+mlflow run . -P steps=train_random_forest
+
+mlflow run . -P steps=train_random_forest \
+  -P hydra_options="modeling.random_forest.max_features=0.1,0.33,0.5,0.75,1.0 modeling.max_tfidf_features=10,15,30 -m"
+
+mlflow run . -P steps=test_regression_model  
+
+mlflow run https://github.com/jhmao697/proj2_build-ml-pipeline-for-short-term-rental-prices.git -v 1.0.1 -P hydra_options="etl.sample='sample2.csv'"
+
+
 # Build an ML Pipeline for Short-Term Rental Prices in NYC
 You are working for a property management company renting rooms and properties for short periods of 
 time on various rental platforms. You need to estimate the typical price for a given property based 
